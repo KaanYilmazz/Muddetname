@@ -40,9 +40,9 @@
 <script>
 
 
-  import Home from "./views/Home";
+    import Home from "./views/Home";
 
-  export default {
+    export default {
         name: "App",
 
         components: {
