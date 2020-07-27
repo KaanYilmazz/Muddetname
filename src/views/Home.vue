@@ -15,10 +15,10 @@
                                         <v-text-field v-model="hesapYil" label="Yil" type="number"/>
                                     </v-col>
                                     <v-col md="4">
-                                        <v-text-field  v-model="hesapAy" label="Ay" type="number"/>
+                                        <v-text-field v-model="hesapAy" label="Ay" type="number"/>
                                     </v-col>
                                     <v-col md="4">
-                                        <v-text-field  v-model="hesapGun" label="Gün" type="number"/>
+                                        <v-text-field v-model="hesapGun" label="Gün" type="number"/>
                                     </v-col>
                                 </v-row>
                                 <v-select
@@ -39,7 +39,7 @@
                                                     :language="tr"></datepicker>
                                     </v-col>
                                 </v-row>
-                                <p style="color: red" v-if="yasHataMesaji">Tarihleri doğru girdiğinizden emin olun!</p>
+                                <p style="color: #ff0000" v-if="yasHataMesaji">Tarihleri doğru girdiğinizden emin olun!</p>
                             </v-col>
                             <v-col md="6">
                                 <v-radio-group label="Mahsup" row v-model="mahsupVarMi">
@@ -47,7 +47,8 @@
                                     <v-radio label="Var" :value="true"></v-radio>
                                     <v-radio label="Yok" :value="false"></v-radio>
                                 </v-radio-group>
-                                        <v-text-field v-if="mahsupVarMi===true" v-model="mahsupGun" label="Mahsup Günü" type="number"/>
+                                <v-text-field v-if="mahsupVarMi===true" v-model="mahsupGun" label="Mahsup Günü"
+                                              type="number"/>
                                 <v-select
                                         :items="cezaTurleri"
                                         v-model="secilenCeza"
@@ -56,7 +57,7 @@
                                         label="Ceza Türü Seçiniz"
                                         required
                                 ></v-select>
-                                <v-radio-group label="Tekerrüre Esas Sabika Kaydi:" row v-model="secilenDurum">
+                                <v-radio-group label="Tekerrüre Esas Sabıka Kaydı:" row v-model="secilenDurum">
                                     <v-spacer></v-spacer>
                                     <v-radio label="Var" :value=7></v-radio>
                                     <v-radio label="Yok" :value=1></v-radio>
@@ -83,7 +84,7 @@
             <v-col cols="12" md="5">
                 <v-card>
                     <v-card-title class="justify-center">Hesap Dökümü</v-card-title>
-                    <v-card-text class="font-weight-bold">Şartli Tahliye: {{sartliTahliye}}</v-card-text>
+                    <v-card-text class="font-weight-bold">Şartlı Tahliye: {{sartliTahliye}}</v-card-text>
                     <v-card-text class="font-weight-bold">Denetimli Serbestlik: {{denetimliSerbestlik}}</v-card-text>
                     <v-card-text class="font-weight-bold">Son Güncelleme Tarihi: 20.01.2020</v-card-text>
                 </v-card>
@@ -106,40 +107,39 @@
         data() {
             return {
                 sucTurleri: [
-                    {id: 2, tur: "Kasten Öldürme (TCK 81, 82)"},
-                    {id: 3, tur: "Kasten Öldürme (TCK 83)"},
-                    {id: 4, tur: "Kasten Öldürme (TCK 83)"},
-                    {id: 5, tur: "Iskence ve Eziyet (TCK 94,95,96)"},
-                    {id: 6, tur: "Özel Hayata Karsi Suçlar (TCK 132 - 138 arasi)"},
-                    {
-                        id: 7,
-                        tur: "Terörle mücadele Kanunu kapsamina girmeyen suçlar bakimindan Örgüt kurmak veya yönetmek ya da örgütün faaliyeti çerçevesinde islenen suçlar"
-                    },
-                    {id: 8, tur: "Devletin Güvenligine Karsi Suçlar (TCK 302 - 339 arasi)"},
-                    {id: 9, tur: "MIT Kanunu Kapsamindaki Suçlar (2937 sayili kanun kapsaminda islenen)"},
-                    {id: 10, tur: "Basit Cinsel Saldiri (TCK 102/1)"},
-                    {id: 11, tur: "Resit Olmayanla Cinsel Iliski Suçu (104/1)"},
-                    {id: 12, tur: "Cinsel Taciz (TCK 105)"},
-                    {id: 13, tur: "Nitelikli Cinsel Saldiri (TCK 102/2)"},
-                    {id: 14, tur: "Çocugun Cinsel Istismari (TCK 103)"},
-                    {id: 15, tur: "Resit Olmayanla Cinsel Iliski (TCK 104/2-3)"},
-                    {id: 16, tur: "Resit Olmayanla Cinsel Iliski Suçunun Nitelikli Hali (TCK 104/2)"},
-                    {id: 17, tur: "Uyusturucu Ticareti (TCK 188)"},
-                    {id: 18, tur: "Terör Suçu(3713 sy. yasa kapsamindaki suçlar)"},
                     {id: 1, tur: "Diğer"},
+                    {id: 2, tur: "Kasten Öldürme (TCK 81, 82)"},
+                    {id: 3, tur: "Kasten Öldürme (TCK 83, İhmali Davranışla)"},
+                    {id: 4, tur: "Üstsoy, Altsoy, Eş veya Kardeşi Yaralama (TCK 86/3-a-b, 87/1,2)"},
+                    {id: 5, tur: "İşkence ve Eziyet (TCK 94,95,96)"},
+                    {id: 6, tur: "Özel Hayata Karşı Suçlar (TCK 132 - 138 arası)"},
+                    {id: 7, tur: "Örgüt Suçları (TCK 220)"},
+                    {id: 8, tur: "Devletin Güvenliğine Karşı Suçlar (TCK 302 - 339 arası)"},
+                    {id: 9, tur: "MİT Kanunu Kapsamındaki Suçlar (2937 sayılı kanun kapsamında işlenen)"},
+                    {id: 10, tur: "Basit Cinsel Saldırı (TCK 102/1)"},
+                    {id: 11, tur: "Reşit Olmayanla Cinsel İlişki Suçu (104/1)"},
+                    {id: 12, tur: "Cinsel Taciz (TCK 105)"},
+                    {id: 13, tur: "Nitelikli Cinsel Saldırı (TCK 102/2)"},
+                    {id: 14, tur: "Çocuğun Cinsel İstismarı (TCK 103)"},
+                    {id: 16, tur: "Reşit Olmayanla Cinsel İlişki Suçunun Nitelikli Hali (TCK 104/2-3)"},
+                    {id: 17, tur: "Uyuşturucu Ticareti (TCK 188)"},
+                    {id: 18, tur: "Terör Suçu(3713 sy. yasa kapsamındaki suçlar)"},
+                    {id: 19, tur: "Neticesi Sebebiyle Ağırlaştırılmış Yaralama (TCK 87/2-d)"},
+
                 ],
                 cezaTurleri: [
-                    {id: 1, tur: "Süreli Hapis Cezasi"},
-                    {id: 2, tur: "Agirlastirilmis Müebbet Hapis Cezasi"},
-                    {id: 3, tur: "Müebbet Hapis Cezasi"},
+                    {id: 1, tur: "Süreli Hapis Cezası"},
+                    {id: 2, tur: "Ağırlaştırılmış Müebbet Hapis Cezası"},
+                    {id: 3, tur: "Müebbet Hapis Cezası"},
                 ],
                 ozelDurumlar: [
                     {id: 1, tur: "Yok"},
-                    {id: 2, tur: "0-6 Yas Araliginda Çocugu Bulunan Kadin Hükümlü"},
+                    {id: 2, tur: "0-6 Yas Araliginda Çocuğu Bulunan Kadın Hükümlü"},
                     // {id: 3, tur: "12-15 Yas  Hükümlüler"},
                     // {id: 4, tur: "15-18 Yas  Hükümlüler"},
                     //{id: 5, tur: "70 Yas Üzeri Hükümlüler"},
-                    {id: 6, tur: "65 Yas Üzeri ve Agir Hasta Hükümlüler"},
+                    {id: 6, tur: "Ağır Hastalık, Engellilik veya Kocama"},
+                    // {id: 8, tur: "65 Yaş Üstü Hükümlüler"},
                     //      {id: 7, tur: "Tekerrür"},
 
                 ],
@@ -150,7 +150,7 @@
                 sucTarihi: new Date("2020-02-03"),
                 dogumTarihi: new Date("1995-12-04"),
                 mahsupVarMi: false,
-                mahsupGun:0,
+                mahsupGun: 0,
                 denetimliSerbestlik: "",
                 sartliTahliye: "",
                 hesapYil: 0,
@@ -163,18 +163,18 @@
                 yasHataMesaji: false
             };
         },
-        watch:{
-            'sucTarihi': function() {
+        watch: {
+            'sucTarihi': function () {
                 this.TarihKontrolEt();
             },
-            'dogumTarihi': function() {
+            'dogumTarihi': function () {
                 this.TarihKontrolEt();
             }
         },
         methods: {
             Hesapla() {
                 this.secilenOzelDurum = this.secilenDurum;
-                this.gun = this.hesapYil * 365 + this.hesapAy * 30 + this.hesapGun;
+                this.gun = this.hesapYil * 365 + this.hesapAy * 30 + this.hesapGun *1;
                 this.denetimliSerbestlik = "x";
                 this.sartliTahliye = "x";
                 this.OzelDurumBelirle();
@@ -217,7 +217,7 @@
                             } else {
                                 this.sonucGun = this.gun * 2 / 3 - 365;
                             }
-                        } else if (this.secilenOzelDurum === 6) {
+                        } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8) {
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0
                             } else {
@@ -250,7 +250,7 @@
                             } else {
                                 this.sonucGun = this.gun * 2 / 3 - 365;
                             }
-                        } else if (this.secilenOzelDurum === 6) { // 65 yas ustu
+                        } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8) { // 65 yas ustu
                             this.sonucGun = this.gun * 2 / 3 - (365 * 3);
                         }
                         break;
@@ -271,7 +271,7 @@
                             } else {
                                 this.sonucGun = this.gun * 2 / 3 - 365;
                             }
-                        } else if (this.secilenOzelDurum === 6) { // 65 yas ustu
+                        } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8) { // 65 yas ustu
                             this.sonucGun = this.gun * 2 / 3 - (365 * 3);
                         }
                         break;
@@ -307,7 +307,7 @@
                             } else {
                                 this.sonucGun = this.gun * 2 / 3 - 365;
                             }
-                        } else if (this.secilenOzelDurum === 6) { // 65 yas
+                        } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8 ) { // 65 yas
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0;
                             } else {
@@ -315,7 +315,7 @@
                             }
                         }
                         break;
-                    // Terör sayilmayan örgüt suçlari ve ya MİT Kanunu Kapsamındaki Suçlar
+                    // Terör sayilmayan örgüt suçlari ve ya MİT Kanunu kapsamındaki Suçlar
                     case 7 :
                     case 9 :
                         if (this.secilenOzelDurum === 1) {
@@ -349,7 +349,7 @@
                             } else {
                                 this.sonucGun = this.gun * 2 / 3 - 365;
                             }
-                        } else if (this.secilenOzelDurum === 6) {
+                        } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8) {
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0
                             } else {
@@ -364,21 +364,18 @@
                     case 15 :
                     case 16 :
                     case 18 :
-                        if (  this.secilenOzelDurum === 1 && this.secilenSuc === 18 ){
+                        if (this.secilenOzelDurum === 1 && this.secilenSuc === 18) {
                             this.sonucGun = this.gun * 3 / 4 - 365;
 
-                        }
-                      else if (this.secilenOzelDurum === 1 ) { // yok
+                        } else if (this.secilenOzelDurum === 1) { // yok
                             if (this.sucTarihi < new Date("2014-06-28")) {
                                 this.sonucGun = this.gun * 2 / 3 - 365;
                             } else {
                                 this.sonucGun = this.gun * 3 / 4 - 365;
                             }
-                        }
-                        else if (this.secilenOzelDurum === 2) { // anne
+                        } else if (this.secilenOzelDurum === 2) { // anne
                             this.sonucGun = this.gun * 3 / 4 - (365 * 2);
-                        }
-                        else if (this.secilenOzelDurum === 3) { // 12-15 yas
+                        } else if (this.secilenOzelDurum === 3) { // 12-15 yas
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = (this.gun * 2 / 3 - 365) / 3;
                             } else {
@@ -392,7 +389,7 @@
                             }
                         } else if (this.secilenOzelDurum === 5 || this.secilenOzelDurum === 7) { // 70 yas
                             this.sonucGun = this.gun * 3 / 4 - 365;
-                        } else if (this.secilenOzelDurum === 6) { // 65 yas
+                        } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8) { // 65 yas
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = this.gun * 3 / 4 - 365 * 3;
                             } else {
@@ -401,21 +398,19 @@
                         }
                         break;
                     case 17:
-                         if (this.secilenOzelDurum === 1 ) { // yok
+                        if (this.secilenOzelDurum === 1) { // yok
                             if (this.sucTarihi < new Date("2014-06-28")) {
                                 this.sonucGun = this.gun * 2 / 3 - 365;
                             } else {
                                 this.sonucGun = this.gun * 3 / 4 - 365;
                             }
-                        }
-                        else if (this.secilenOzelDurum === 2) { // anne
-                             if (this.sucTarihi < new Date("2020-03-30")) {
-                                 this.sonucGun = this.gun * 3 / 4 - (365*4) ;
-                             } else {
-                                 this.sonucGun = this.gun * 3 / 4 - (365*2);
-                             }
-                        }
-                        else if (this.secilenOzelDurum === 3) { // 12-15 yas
+                        } else if (this.secilenOzelDurum === 2) { // anne
+                            if (this.sucTarihi < new Date("2020-03-30")) {
+                                this.sonucGun = this.gun * 3 / 4 - (365 * 4);
+                            } else {
+                                this.sonucGun = this.gun * 3 / 4 - (365 * 2);
+                            }
+                        } else if (this.secilenOzelDurum === 3) { // 12-15 yas
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = (this.gun * 2 / 3 - 365) / 3;
                             } else {
@@ -427,22 +422,21 @@
                             } else {
                                 this.sonucGun = (this.gun * 2 / 3 - 365);
                             }
-                        } else if (this.secilenOzelDurum === 5 ) { // 70 yas
-                             if (this.sucTarihi < new Date("2020-03-30")) {
-                                 this.sonucGun = this.gun * 3 / 4 - (365*4) ;
-                             } else {
-                                 this.sonucGun = this.gun * 3 / 4 - (365*1);
-                             }
-                        } else if (this.secilenOzelDurum === 6) { // 65 yas
+                        } else if (this.secilenOzelDurum === 5) { // 70 yas
+                            if (this.sucTarihi < new Date("2020-03-30")) {
+                                this.sonucGun = this.gun * 3 / 4 - (365 * 4);
+                            } else {
+                                this.sonucGun = this.gun * 3 / 4 - (365 * 1);
+                            }
+                        } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8) { // 65 yas
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0;
                             } else {
                                 this.sonucGun = this.gun * 3 / 4 - 365 * 3;
                             }
-                        }
-                        else if(this.secilenOzelDurum === 7){ //tekerrür
+                        } else if (this.secilenOzelDurum === 7) { //tekerrür
                             this.sonucGun = this.gun * 3 / 4 - 365;
-                         }
+                        }
                         break;
                     default:
                         break;
@@ -451,30 +445,23 @@
                 this.Yazdir();
             },
             Yazdir() {
-                if(this.secilenCeza === 2)
-                {
+                if (this.secilenCeza === 2) {
                     this.denetimliSerbestlik = "Ağırlaştırılmış müebbet hapis cezasına mahkûm edilmiş olanlar 30 yılını yüksek güvenlikli kapalı ceza infaz kurumunda çektikleri takdirde, koşullu salıverilmeden yararlanabilirler.";
                     this.sartliTahliye = "-";
-                }
-                else if (this.secilenCeza ===3)
-                {
+                } else if (this.secilenCeza === 3) {
                     this.denetimliSerbestlik = "Müebbet hapis cezasına mahkûm edilmiş olanlar 24 yılını yüksek güvenlikli kapalı ceza infaz kurumunda çektikleri takdirde, koşullu salıverilmeden yararlanabilirler.";
                     this.sartliTahliye = "-";
-                }
-                else{
-                if (this.mahsupVarMi===true)
-                {
-                    this.sonucGun -= this.mahsupGun;
-                }
+                } else {
+                    if (this.mahsupVarMi === true) {
+                        this.sonucGun -= this.mahsupGun;
+                    }
 
-                    if (this.sonucGun <= 0)
-                    {
+                    if (this.sonucGun <= 0) {
                         this.denetimliSerbestlik = "Denetimli serbestlikten yararlanır, infaz süresi yoktur.";
                         this.sartliTahliye = "-";
-                    }
-                    else{
+                    } else {
                         this.denetimliSerbestlik = this.humanise(this.sonucGun);
-                        this.sartliTahliye = this.humanise(this.gun/2);
+                        this.sartliTahliye = this.humanise(this.gun / 2);
                     }
 
                 }
@@ -510,7 +497,10 @@
                         this.secilenOzelDurum = 3;
                     }
                 } else if (![6, 7].includes(this.secilenOzelDurum)) {
-                    if (yas >= 70) {
+                    if (yas >= 65) {
+                        this.secilenOzelDurum = 8
+                    }
+                    else  if (yas >= 70) {
                         this.secilenOzelDurum = 5
                     }
                 }
@@ -522,12 +512,11 @@
 
                 return Math.abs(age_dt.getUTCFullYear() - 1970);
             },
-            TarihKontrolEt(){
-                if (this.sucTarihi<this.dogumTarihi){
+            TarihKontrolEt() {
+                if (this.sucTarihi < this.dogumTarihi) {
                     this.yasHataMesaji = true;
-                }
-                else {
-                    this.yasHataMesaji=false;
+                } else {
+                    this.yasHataMesaji = false;
                 }
             },
 
