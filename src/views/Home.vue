@@ -221,7 +221,13 @@
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0
                             } else {
-                                this.sonucGun = this.gun / 2 - (3 * 365);
+                                if (this.secilenOzelDurum === 6 )
+                                {
+                                    this.sonucGun = this.gun / 2 - (3 * 365);
+                                }else {
+                                    this.sonucGun = this.gun / 2 - 365;
+                                }
+
                             }
                         } else if (this.secilenOzelDurum === 7) {
                             this.sonucGun = this.gun / 2 - (3 * 365);
@@ -311,7 +317,12 @@
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0;
                             } else {
+                                if (this.secilenOzelDurum === 6 )
+                                {
                                 this.sonucGun = this.gun * 2 / 3 - (365 * 2);
+                                }else {
+                                    this.sonucGun = this.gun * 2 / 3 - 365;
+                                }
                             }
                         }
                         break;
@@ -352,8 +363,15 @@
                         } else if (this.secilenOzelDurum === 6 || this.secilenOzelDurum === 8) {
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0
-                            } else {
-                                this.sonucGun = this.gun * 2 / 3 - (3 * 365);
+                            }
+                            else {
+                                if (this.secilenOzelDurum === 6 )
+                                {
+                                    this.sonucGun = this.gun * 2 / 3 - (3 * 365);
+                                }else {
+                                    this.sonucGun = this.gun * 2 / 3 - 365;
+                                }
+
                             }
                         } else if (this.secilenOzelDurum === 7) {
                             this.sonucGun = this.gun * 2 / 3 - 365;
@@ -393,7 +411,12 @@
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = this.gun * 3 / 4 - 365 * 3;
                             } else {
-                                this.sonucGun = this.gun * 3 / 4 - 365 * 2;
+                                if (this.secilenOzelDurum === 6 )
+                                {
+                                    this.sonucGun = this.gun * 3 / 4 - 365 * 2;
+                                }else {
+                                    this.sonucGun = this.gun * 3 / 4 - 365;
+                                }
                             }
                         }
                         break;
@@ -432,7 +455,13 @@
                             if (this.sucTarihi < new Date("2020-03-30")) {
                                 this.sonucGun = 0;
                             } else {
-                                this.sonucGun = this.gun * 3 / 4 - 365 * 3;
+                                if (this.secilenOzelDurum === 6 )
+                                {
+                                    this.sonucGun = this.gun * 3 / 4 - 365 * 3;
+                                }else {
+                                    this.sonucGun = this.gun * 3 / 4 - 365;
+                                }
+
                             }
                         } else if (this.secilenOzelDurum === 7) { //tekerrür
                             this.sonucGun = this.gun * 3 / 4 - 365;
